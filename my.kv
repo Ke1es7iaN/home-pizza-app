@@ -1,0 +1,2236 @@
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    number: number
+    password: passw
+    
+
+    FloatLayout:
+        cols:1
+
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+            Color:
+                rgba: .92, .90, .77, 1
+            Rectangle:
+                size: 273, 3
+                pos: 69, 485
+
+            Color:
+                rgba: .92, .90, .77, 1
+            Rectangle:
+                size: 273, 3
+                pos: 69, 392
+
+            Color:
+                rgba: .92, .90, .77, 1
+            Rectangle:
+                size: 273, 3
+                pos: 69, 300
+
+    
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.width, root.height/2
+
+            Label:
+                text: "Регистрация"
+                font_size: '40sp'
+                size_hint: 1, 0.2
+                color: .92, .90, .77, 1
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, .28
+                padding: 69, 0, 69, 25
+                spacing: 40
+                
+    #Первые два поля номер телефонa
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    Label:
+                        text: 'Никнейм'
+                        color: .92, .90, .77, 1
+                        size_hint: None, None
+                        size: (58, 28)            #??? откуда считает
+                        font_size: '13sp'
+
+                    TextInput:
+                        size_hint: None, None
+                        size: 273, 30 
+                        background_color: .44, .15, .16, 1
+                        font_size: '13sp'
+                        foreground_color: .92, .90, .77, 1
+                        id: namee
+                        multiline: False
+
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    Label:
+                        text: 'Номер телефона'
+                        color: .92, .90, .77, 1
+                        size_hint: None, None
+                        size: (103, 28)            #??? откуда считает
+                        font_size: '13sp'
+
+                    TextInput:
+                        size_hint: None, None
+                        size: 273, 30 
+                        background_color: .44, .15, .16, 1
+                        font_size: '13sp'
+                        foreground_color: .92, .90, .77, 1
+                        id: number
+                        multiline: False
+
+
+    #Вторые два поля пароль
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    Label:
+                        text: 'Пароль'
+                        color: .92, .90, .77, 1
+                        size_hint: None, None
+                        size: (45, 28)            #??? откуда считает
+                        font_size: '13sp'
+
+                    TextInput:
+                        size_hint: None, None
+                        size: 273, 30 
+                        password: True
+                        background_color: .44, .15, .16, 1
+                        font_size: '13sp'
+                        foreground_color: .92, .90, .77, 1
+                        id: passw
+                        multiline: False
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, .3
+                padding: 88, 30, 0, 0
+                spacing: 19
+
+
+                Button:
+                    font_name: "2221.ttf"
+                    background_normal: ''
+                    background_color: .92, .90, .77, 1
+                    color: .44, .15, .16, 1
+                    size_hint: None, None
+                    size: 236, 50
+                    font_size: '25sp'
+                    text: "Есть аккаунт? Вход"
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.login()
+
+                    canvas.before:
+                        Color:
+                            rgba: .92, .90, .77, 1
+                        RoundedRectangle:
+                            size: 256, 50
+                            pos: 78, self.y
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: "Регистрация"
+                    background_normal: ''
+                    background_color: .92, .90, .77, 1
+                    color: .44, .15, .16, 1
+                    size_hint: None, None
+                    size: 236, 50
+                    font_size: '25sp'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.submit()
+
+                    canvas.before:
+                        Color:
+                            rgba: .92, .90, .77, 1
+                        RoundedRectangle:
+                            size: 256, 50
+                            pos: 78, self.y
+
+                Widget:
+                    size_hint: None, None
+                    size: 411, 55
+
+
+
+
+
+<LoginWindow>:
+    name: "login"
+
+    number: number
+    password: password
+    
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+            Color:
+                rgba: .92, .90, .77, 1
+            Rectangle:
+                size: 273, 3
+                pos: 69, 348
+
+            Color:
+                rgba: .92, .90, .77, 1
+            Rectangle:
+                size: 273, 3
+                pos: 69, 238
+
+#картинка
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .42
+
+            Image:
+                source: 'img/logo_big.png'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .28
+            padding: 69, 0, 69, 25
+            spacing: 40
+            
+#Первые два поля номер телефонa
+            BoxLayout:
+                orientation: 'vertical'
+
+                Label:
+                    text: 'Номер телефона'
+                    color: .92, .90, .77, 1
+                    size_hint: None, None
+                    size: (95, 28)            #??? откуда считает
+                    font_size: '13sp'
+
+                TextInput:
+                    id: number
+                    size_hint: None, None
+                    size: 273, 30 
+                    background_color: .44, .15, .16, 1
+                    font_size: '13sp'
+                    foreground_color: .92, .90, .77, 1
+                    outline_color: .44, .15, .16, 1
+
+#Вторые два поля пароль
+            BoxLayout:
+                orientation: 'vertical'
+
+                Label:
+                    text: 'Пароль'
+                    color: .92, .90, .77, 1
+                    size_hint: None, None
+                    size: (45, 28)            #??? откуда считает
+                    font_size: '13sp'
+
+                TextInput:
+                    id: password
+                    size_hint: None, None
+                    size: 273, 30 
+                    password: True
+                    background_color: .44, .15, .16, 1
+                    font_size: '13sp'
+                    foreground_color: .92, .90, .77, 1
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .3
+            padding: 111, 30, 0, 0
+            spacing: 19
+
+            Button:
+                font_name: "2221.ttf"
+                text: 'Вход'
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                color: .44, .15, .16, 1
+                size_hint: None, None
+                size: 190, 50
+                font_size: '32sp'
+                on_release:
+                    root.manager.transition.direction = "up"
+                    root.loginBtn()
+
+                canvas.before:
+                    Color:
+                        rgba: .92, .90, .77, 1
+                    RoundedRectangle:
+                        size: 210, 50
+                        pos: 101, self.y
+
+
+
+            Button:
+                font_name: "2221.ttf"
+                text: 'Регистрация'
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                color: .44, .15, .16, 1
+                size_hint: None, None
+                size: 190, 50
+                font_size: '30sp'
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.createBtn()
+
+                canvas.before:
+                    Color:
+                        rgba: .92, .90, .77, 1
+                    RoundedRectangle:
+                        size: 210, 50
+                        pos: 101, self.y
+
+
+
+            Widget:
+                size_hint: None, None
+                size: 411, 55
+
+       
+
+
+<MainWindow>:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .78, .75, .69, 1 #серый
+            Rectangle:
+                size: 411, 730
+                pos: 0, 0
+
+
+            
+
+            Color:
+                rgba: .44, .15, .16, 1 #коричнивый
+            Rectangle:
+                size: 411, 158
+                pos: 0, 574
+
+#верхние кнопки и лого
+        BoxLayout: 
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 157
+
+            BoxLayout:
+                padding: 5, 5, 0, 100 
+                Button:
+                    size_hint: None, None
+                    size: 67, 52
+                    background_normal: 'img/catalog.png'
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.infoOut()
+
+            Image:
+                source: 'img/logo.png'
+
+            BoxLayout: 
+                padding: 60, 5, 0, 91 
+                Button:
+                    size_hint: None, None
+                    size: 72, 61
+                    background_normal: 'img/basket.png'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.basketOut()
+
+
+
+
+#bl           
+        BoxLayout:
+            orientation: 'vertical'
+            size: 411, 730
+
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 43
+                pos: 0, 531
+
+                Button:
+                    text: 'МЕНЮ ДОСТАВКИ'
+                    font_name: "2221.ttf"
+                    font_size: '20sp'
+                    color: 0, 0, 0, 1
+                    background_normal: ''
+                    background_color: .94, .69, .06, 1
+
+                    canvas.before:
+                        Color:
+                            rgba: .94, .69, .06, 1 #ораньжевый
+                        Rectangle:
+                            size: 411, 43
+                            pos: 0, 531
+
+
+
+    #кнопки текст и картинка 
+
+            Button:
+                size_hint: None, None
+                size: 411, 131 
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                on_release:
+                    root.pizzaOut()
+                    root.manager.transition.direction = "up"
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+                    y: self.parent.y
+                    x: self.parent.x
+                    size_hint: None, None
+                    size: 411, 131
+
+                    BoxLayout:
+                        size_hint: None, None
+                        size: 70, 133
+                        padding: 13, 0, 0, 14
+
+                        Image:
+                            size_hint: None, None
+                            source: 'img/pizza.png'
+
+                    Label: 
+                        text: 'ПИЦЦА'
+                        font_size: '26sp'
+                        color: .44, .15, .16, 1
+                        size_hin: None, None
+
+            Widget: 
+                size_hint: None, None
+                size: 411, 2
+
+            Button:
+                size_hint: None, None
+                size: 411, 131
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                on_release:
+                    root.rollsOut()
+                    root.manager.transition.direction = "up"
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+                    y: self.parent.y
+                    x: self.parent.x
+                    size_hint: None, None
+                    size: 411, 131
+
+                    BoxLayout:
+                        size_hint: None, None
+                        size: 70, 133
+                        padding: 15, 0, 0, 14
+
+                        Image:
+                            source: 'img/rolls.png'
+                            size_hint: None, None
+
+                    Label: 
+                        text: 'РОЛЛЫ'
+                        font_size: '26sp'
+                        color: .44, .15, .16, 1
+                        size_hin: None, None
+
+            Widget: 
+                size_hint: None, None
+                size: 411, 2
+
+            Button:
+                size_hint: None, None
+                size: 411, 131
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                on_release:
+                    root.saladsOut()
+                    root.manager.transition.direction = "up"
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+                    y: self.parent.y
+                    x: self.parent.x
+                    size_hint: None, None
+                    size: 411, 131
+                    spacing: 15
+
+                    BoxLayout:
+                        size_hint: None, None
+                        size: 70, 133
+                        padding: 15, 0, 0, 14
+                        Image:
+                            source: 'img/salads.png'
+                            size_hint: None, None
+
+                    Label: 
+                        text: 'САЛАТЫ'
+                        font_size: '26sp'
+                        color: .44, .15, .16, 1
+                        size_hin: None, None
+
+            Widget: 
+                size_hint: None, None
+                size: 411, 2
+
+            Button:
+                size_hint: None, None
+                size: 411, 131
+                background_normal: ''
+                background_color: .92, .90, .77, 1
+                on_release:
+                    root.dessertOut()
+                    root.manager.transition.direction = "up"
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+                    y: self.parent.y
+                    x: self.parent.x
+                    size_hint: None, None
+                    size: 411, 131
+                    spacing: 30
+
+
+                    BoxLayout:
+                        size_hint: None, None
+                        size: 70, 133
+                        padding: 15, 0, 0, 14
+
+                        Image:
+                            source: 'img/dessert.png'
+                            size_hint: None, None
+
+                    Label: 
+                        text: 'ДЕСЕРТЫ'
+                        font_size: '26sp'
+                        color: .44, .15, .16, 1
+                        size_hin: None, None
+
+
+
+        #Label:
+        #    id: n
+        #    pos_hint:{"x": 0.1, "top":0.9}
+        #    size_hint:0.8, 0.2
+        #    text: "Account Name: "
+
+        #Label:
+        #    id: number
+        #    pos_hint:{"x": 0.1, "top":0.7}
+        #    size_hint:0.8, 0.2
+        #    text: "Номер телефона: "
+
+        #Label:
+        #    id: created
+        #    pos_hint:{"x": 0.1, "top":0.5}
+        #    size_hint:0.8, 0.2
+        #    text: "Created: "
+
+        #Button:
+        #    pos_hint:{"x":0.2, "y": 0.1}
+        #    size_hint:0.6,0.2
+        #    text: "Log Out"
+        #    on_release:
+        #        app.root.current = "login"
+        #        root.manager.transition.direction = "down"
+
+
+
+<BasketWindow>:
+    name: "order"
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+            Color:
+                rgba: .94, .69, .06, 1
+            Rectangle:
+                size: 411, 62
+                pos: 0, 668
+
+            Color:
+                rgba: .78, .75, .69, 1 #gray
+            Rectangle:
+                size: 411, 295
+                pos: 0, 373
+
+            Color:
+                rgba: .92, .90, .77, 1 #жёлтая
+            Rectangle:
+                size: 411, 97
+                pos: 0, 571
+
+            Color:
+                rgba: .92, .90, .77, 1 #жёлтая
+            Rectangle:
+                size: 411, 97
+                pos: 0, 472
+
+            Color:
+                rgba: .92, .90, .77, 1 #жёлтая
+            Rectangle:
+                size: 411, 97
+                pos: 0, 373
+
+            
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 62
+            spacing:30
+            padding: 21, 10, 10, 9
+
+            Label:
+                font_name: "2221.ttf"
+                text: 'Корзина'
+                font_size: '36sp'
+                color: 0, 0, 0, 1
+                size_hin: None, None
+
+            BoxLayout:
+                padding: 10, 0, 0, 0
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: 'Очистить'
+                    font_size: '20sp'
+                    color: .92, .90, .77, 1
+                    background_normal: ''
+                    background_color: .44, .15, .16, 1
+                    size_hint: None, None
+                    size: 148, 43
+
+                    canvas.before:
+                        Color:
+                            rgba: .44, .15, .16, 1
+                        RoundedRectangle:
+                            size: 168, 43
+                            pos: 228, self.y
+
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 411, 587
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 295
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                        
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+    #текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Пицца Маргарита'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 579
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 579
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 579    
+
+            Widget: 
+                size_hint: None, None
+                size: 411, 2
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 97 
+                    
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+
+                    BoxLayout: 
+                        size_hint: None, None
+                        size: 113, 97
+
+                        Image:
+                            source: 'img/cake.png' 
+#текст по середине 
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        Label: 
+                            text: 'Клубничный торт'
+                            font_size: '18sp'
+                            color: 0, 0, 0, 1
+
+                        Label: 
+                            text: 'Цена: 180'
+                            font_size: '18sp'
+                            color: .78, .75, .69, 1
+
+                        Label: 
+                            text: 'Итого: 180'
+                            font_size: '18sp'
+                            color: 0, 0, 0, 1
+
+
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+                        size_hint: None, None
+                        size: 115, 97
+                        padding: 5, 0, 0, 12
+                        spacing: 15
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '1'
+                            font_size: '22sp'
+                            color: 0, 0, 0, 1
+                            background_normal: ''
+                            background_color: .94, .69, .06, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .94, .69, .06, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 296, 480
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '+'
+                            font_size: '28sp'
+                            color: .92, .90, .77, 1
+                            background_normal: ''
+                            background_color: .44, .15, .16, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .44, .15, .16, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 333, 480
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '-'
+                            font_size: '28sp'
+                            color: .92, .90, .77, 1
+                            background_normal: ''
+                            background_color: .44, .15, .16, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .44, .15, .16, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 370, 480
+
+                
+
+            Widget: 
+                size_hint: None, None
+                size: 411, 2
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 97 
+                    
+
+                BoxLayout: 
+                    orientation: 'horizontal'
+
+                    BoxLayout: 
+                        size_hint: None, None
+                        size: 113, 97
+
+                        Image:
+                            source: 'img/sushi.png' 
+#текст по середине 
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        Label: 
+                            text: 'Ролл Филадельфия'
+                            font_size: '18sp'
+                            color: 0, 0, 0, 1
+
+                        Label: 
+                            text: 'Цена: 300'
+                            font_size: '18sp'
+                            color: .78, .75, .69, 1
+
+                        Label: 
+                            text: 'Итого: 300'
+                            font_size: '18sp'
+                            color: 0, 0, 0, 1
+
+
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+                        size_hint: None, None
+                        size: 115, 97
+                        padding: 5, 0, 0, 12
+                        spacing: 15
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '1'
+                            font_size: '22sp'
+                            color: 0, 0, 0, 1
+                            background_normal: ''
+                            background_color: .94, .69, .06, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .94, .69, .06, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 296, 381
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '+'
+                            font_size: '28sp'
+                            color: .92, .90, .77, 1
+                            background_normal: ''
+                            background_color: .44, .15, .16, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .44, .15, .16, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 333, 381
+
+                        Button:
+                            font_name: "2221.ttf"
+                            text: '-'
+                            font_size: '28sp'
+                            color: .92, .90, .77, 1
+                            background_normal: ''
+                            background_color: .44, .15, .16, 1
+                            size_hint: None, None
+                            size: 22, 22
+
+                            canvas.before:
+                                Color:
+                                    rgba: .44, .15, .16, 1
+                                Ellipse:
+                                    size: 32, 32
+                                    pos: 370, 381
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 292
+
+
+
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 81
+            padding: 26, 0, 31, 38
+            spacing:40
+
+            Button: 
+                text:'Меню'
+                font_name: "2221.ttf"
+                font_size: '20sp'
+                color: .92, .90, .77, 1
+                background_normal: ''
+                background_color: .94, .69, .06, 1
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.Out()
+                size_hint: None, None
+                size: 158, 43
+
+                canvas.before:
+                    Color:
+                        rgba: .94, .69, .06, 1
+                    RoundedRectangle:
+                        size: 178, 43
+                        pos: 16, self.y
+
+            
+
+            Button: 
+                text:'Адреc'
+                font_name: "2221.ttf"
+                font_size: '20sp'
+                color: .92, .90, .77, 1
+                background_normal: ''
+                background_color: .94, .69, .06, 1
+                size_hint: None, None
+                size: 158, 43
+
+                canvas.before:
+                    Color:
+                        rgba: .94, .69, .06, 1
+                    RoundedRectangle:
+                        size: 178, 43
+                        pos: 214, self.y
+
+
+
+
+<InfoWindow>:
+    name: "info"
+    #n: n
+    #number: number
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+            Color:
+                rgba: .94, .69, .06, 1
+            Rectangle:
+                size: 411, 62
+                pos: 0, 668
+
+        BoxLayout:
+            oorientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 62
+            spacing: 50
+            padding: 20, 10, 20, 9
+
+            
+            Button:
+                font_name: "2221.ttf"
+                text: 'Выйти'
+                font_size: '20sp'
+                color: .92, .90, .77, 1
+                background_normal: ''
+                background_color: .44, .15, .16, 1
+                on_release:
+                    root.logOut()
+                    root.manager.transition.direction = "down"
+
+                canvas.before:
+                    Color:
+                        rgba: .44, .15, .16, 1
+                    RoundedRectangle:
+                        size: 180, 43
+                        pos: 10, self.y
+
+            Button:
+                font_name: "2221.ttf"
+                text: 'Меню'
+                font_size: '20sp'
+                color: .92, .90, .77, 1
+                background_normal: ''
+                background_color: .44, .15, .16, 1
+                on_release:
+                    root.MenuOut()
+                    root.manager.transition.direction = "left"
+
+                canvas.before:
+                    Color:
+                        rgba: .44, .15, .16, 1
+                    RoundedRectangle:
+                        size: 180, 43
+                        pos: 220, self.y
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 411, 668
+            padding: 0, 0, 0, 450
+
+            
+ 
+
+
+#ПИццАААААААААААААААААААААААААААААААААААААААААААААААААААААА
+<PizzaWindow>:
+    name: "pizza"
+
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .78, .75, .69, 1
+            Rectangle:
+                size: 411, 730
+                pos: 0, 0
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 43
+                pos: 0, 531
+
+            Color:
+                rgba: .44, .15, .16, 1 #коричнивый
+            Rectangle:
+                size: 411, 158
+                pos: 0, 574
+
+            #other
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 36
+                pos: 0, 0
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 36
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 135
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 234
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 333
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 432
+
+
+
+#верхние кнопки и лого
+        BoxLayout: 
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 157
+
+            BoxLayout:
+                padding: 5, 0, 5, 100
+                Button:
+                    size_hint: None, None
+                    size: 67, 52
+                    background_normal: 'img/catalog.png'
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.infoOut()
+
+            Image:
+                source: 'img/logo.png'
+
+            BoxLayout: 
+                padding: 60, 5, 0, 91 
+                Button:
+                    size_hint: None, None
+                    size: 72, 61
+                    background_normal: 'img/basket.png'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.basketOut()
+
+
+#кнопка меню          
+        BoxLayout:
+            orientation: 'vertical'
+            size: 411, 730
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 43
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: 'МЕНЮ ДОСТАВКИ'
+                    font_size: '20sp'
+                    color: 0, 0, 0, 1
+                    background_normal: ''
+                    background_color: .94, .69, .06, 1
+                    on_release:
+                        root.manager.transition.direction = "down"
+                        root.MainPizzaOut()
+#заказ
+            
+            BoxLayout:
+                orientation: 'vertical' 
+                size_hint: None, None
+                size: 411, 529
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Пицца Маргарита'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 440
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Пицца Пеперони'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 341
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 341
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 341
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: '4 сыра'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 242
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 242
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 242
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Пицца Маргарита'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 143
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 143
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 143
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/pizzaMar.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Пицца Маргарита'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 365'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 730'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '2'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 44
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 44
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 44
+
+                Widget:
+                    size_hint: None, None
+                    size: 411, 36
+
+               
+
+                            
+
+
+
+
+
+
+
+
+    
+
+#rollssssssssssssssss
+<RollsWindow>:
+    name: "rolls"
+
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: 411, 730
+                pos: 0, 0
+
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 43
+                pos: 0, 531
+
+            Color:
+                rgba: .44, .15, .16, 1 #коричнивый
+            Rectangle:
+                size: 411, 158
+                pos: 0, 574
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 36
+                pos: 0, 0
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 432
+
+#верхние кнопки и лого
+        BoxLayout: 
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 157
+
+            BoxLayout:
+                padding: 5, 5, 0, 100 
+                Button:
+                    size_hint: None, None
+                    size: 67, 52
+                    background_normal: 'img/catalog.png'
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.infoOut()
+
+            Image:
+                source: 'img/logo.png'
+
+            BoxLayout: 
+                padding: 60, 5, 0, 91 
+                Button:
+                    size_hint: None, None
+                    size: 72, 61
+                    background_normal: 'img/basket.png'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.basketOut()
+
+
+#кнопка меню          
+        BoxLayout:
+            orientation: 'vertical'
+            size: 411, 730
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 43
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: 'МЕНЮ ДОСТАВКИ'
+                    font_size: '20sp'
+                    color: 0, 0, 0, 1
+                    background_normal: ''
+                    background_color: .94, .69, .06, 1
+                    on_release:
+                        root.manager.transition.direction = "down"
+                        root.MainRollsOut()
+#заказ
+            
+            BoxLayout:
+                orientation: 'vertical' 
+                size_hint: None, None
+                size: 411, 529
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/sushi.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Ролл Филадельфия'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 300'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 300'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '1'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 440
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget:
+                    size_hint: None, None
+                    size: 411, 36
+
+
+
+#saladdddddddddddddddddddddddddddddddddd
+<SaladsWindow>:
+    name: "salads"
+
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: 411, 730
+                pos: 0, 0
+
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 43
+                pos: 0, 531
+
+            Color:
+                rgba: .44, .15, .16, 1 #коричнивый
+            Rectangle:
+                size: 411, 158
+                pos: 0, 574
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 36
+                pos: 0, 0
+
+            
+
+#верхние кнопки и лого
+        BoxLayout: 
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 157
+
+            BoxLayout:
+                padding: 5, 5, 0, 100 
+                Button:
+                    size_hint: None, None
+                    size: 67, 52
+                    background_normal: 'img/catalog.png'
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.infoOut()
+
+            Image:
+                source: 'img/logo.png'
+
+            BoxLayout: 
+                padding: 60, 5, 0, 91 
+                Button:
+                    size_hint: None, None
+                    size: 72, 61
+                    background_normal: 'img/basket.png'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.basketOut()
+
+
+#кнопка меню          
+        BoxLayout:
+            orientation: 'vertical'
+            size: 411, 730
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 43
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: 'МЕНЮ ДОСТАВКИ'
+                    font_size: '20sp'
+                    color: 0, 0, 0, 1
+                    background_normal: ''
+                    background_color: .94, .69, .06, 1
+                    on_release:
+                        root.manager.transition.direction = "down"
+                        root.MainSaladsOut()
+#заказ
+            
+            BoxLayout:
+                orientation: 'vertical' 
+                size_hint: None, None
+                size: 411, 529
+
+#desserttttttt
+<DessertWindow>:
+    name: "dessert"
+
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas:
+            Color:
+                rgba: .44, .15, .16, 1
+            Rectangle:
+                size: 411, 730
+                pos: 0, 0
+
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 43
+                pos: 0, 531
+
+            Color:
+                rgba: .44, .15, .16, 1 #коричнивый
+            Rectangle:
+                size: 411, 158
+                pos: 0, 574
+
+            Color:
+                rgba: .94, .69, .06, 1 #ораньжевый
+            Rectangle:
+                size: 411, 36
+                pos: 0, 0
+
+            Color:
+                rgba: .92, .90, .77, 1 
+            Rectangle:
+                size: 411, 97
+                pos: 0, 432
+
+#верхние кнопки и лого
+        BoxLayout: 
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 411, 157
+
+            BoxLayout:
+                padding: 5, 5, 0, 100
+                Button:
+                    size_hint: None, None
+                    size: 67, 52
+                    background_normal: 'img/catalog.png'
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.infoOut()
+
+            Image:
+                source: 'img/logo.png'
+
+            BoxLayout: 
+                padding: 60, 5, 0, 91 
+                Button:
+                    size_hint: None, None
+                    size: 72, 61
+                    background_normal: 'img/basket.png'
+                    on_release:
+                        root.manager.transition.direction = "left"
+                        root.basketOut()
+
+
+#кнопка меню          
+        BoxLayout:
+            orientation: 'vertical'
+            size: 411, 730
+
+            BoxLayout:
+                size_hint: None, None
+                size: 411, 43
+
+                Button:
+                    font_name: "2221.ttf"
+                    text: 'МЕНЮ ДОСТАВКИ'
+                    font_size: '20sp'
+                    color: 0, 0, 0, 1
+                    background_normal: ''
+                    background_color: .94, .69, .06, 1
+                    on_release:
+                        root.manager.transition.direction = "down"
+                        root.MainDessertOut()
+#заказ
+            
+            BoxLayout:
+                orientation: 'vertical' 
+                size_hint: None, None
+                size: 411, 529
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97 
+                    
+
+                    BoxLayout: 
+                        orientation: 'horizontal'
+
+                        BoxLayout: 
+                            size_hint: None, None
+                            size: 113, 97
+
+                            Image:
+                                source: 'img/cake.png' 
+#текст по середине 
+                        BoxLayout:
+                            orientation: 'vertical'
+
+                            Label: 
+                                text: 'Клубничный торт'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+                            Label: 
+                                text: 'Цена: 180'
+                                font_size: '18sp'
+                                color: .78, .75, .69, 1
+
+                            Label: 
+                                text: 'Итого: 180'
+                                font_size: '18sp'
+                                color: 0, 0, 0, 1
+
+
+
+                        BoxLayout: 
+                            orientation: 'horizontal'
+                            size_hint: None, None
+                            size: 115, 97
+                            padding: 5, 0, 0, 12
+                            spacing: 15
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '1'
+                                font_size: '22sp'
+                                color: 0, 0, 0, 1
+                                background_normal: ''
+                                background_color: .94, .69, .06, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .94, .69, .06, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 296, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '+'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 333, 440
+
+                            Button:
+                                font_name: "2221.ttf"
+                                text: '-'
+                                font_size: '28sp'
+                                color: .92, .90, .77, 1
+                                background_normal: ''
+                                background_color: .44, .15, .16, 1
+                                size_hint: None, None
+                                size: 22, 22
+
+                                canvas.before:
+                                    Color:
+                                        rgba: .44, .15, .16, 1
+                                    Ellipse:
+                                        size: 32, 32
+                                        pos: 370, 440
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget: 
+                    size_hint: None, None
+                    size: 411, 2
+
+                BoxLayout:
+                    size_hint: None, None
+                    size: 411, 97
+
+                Widget:
+                    size_hint: None, None
+                    size: 411, 36
